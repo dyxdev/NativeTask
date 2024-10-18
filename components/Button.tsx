@@ -8,6 +8,7 @@ export type ButtonProps = {
     text?: string;
     children?: React.ReactNode;
     style?: ViewStyle;
+    testID?:string
 };
 
 /**
@@ -16,13 +17,14 @@ export type ButtonProps = {
  * @param {ButtonProps} props - The component's properties.
  * @returns {JSX.Element} The rendered button.
  */
-export const Button = ({ onPress, text, children, style }: ButtonProps) => {
+export const Button = ({ onPress, text, children, style, testID }: ButtonProps) => {
     const { theme } = useTheme();
     return (
         <Pressable
+            testID={testID}
             style={({ pressed }) => [
                 styles.container,
-                { backgroundColor: pressed ? `${theme.primary}ee` : theme.primary },
+                { backgroundColor: pressed ? `${theme?.primary}ee` : theme?.primary },
                 style,
             ]}
             onPress={onPress}>

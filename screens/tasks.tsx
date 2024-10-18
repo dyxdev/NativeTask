@@ -50,7 +50,7 @@ export const TasksScreen = () => {
 
     return (
         <ThemedView>
-            <Button onPress={() => openModal()} style={styles.btnAdd}>
+            <Button testID='Tasks.addBtn' onPress={() => openModal()} style={styles.btnAdd}>
                 <ThemedText style={{ color: theme.layoutBg, fontSize: 20 }}>New task</ThemedText>
             </Button>
             <FlatList
@@ -72,7 +72,7 @@ export const TasksScreen = () => {
                             <>
                                 <View style={styles.inputBtnRow}>
                                     <TextInput
-                                        testID="Tasks.newTaskInput"
+                                        testID="newTaskInput"
                                         ref={inputRef}
                                         placeholder="Insert new Task"
                                         placeholderTextColor={theme?.color}
@@ -89,7 +89,7 @@ export const TasksScreen = () => {
                                         onBlur={handleBlur('description')}
                                         value={values.description}
                                     />
-                                    <Button onPress={handleSubmit} style={styles.btnAdd}>
+                                    <Button testID='btnSubmit' onPress={handleSubmit} style={styles.btnAdd}>
                                         <Ionicons name="checkmark-circle-sharp" size={20} color={theme.layoutBg} />
                                     </Button>
                                 </View>

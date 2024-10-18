@@ -50,7 +50,7 @@ export const RoundedNetworkImage = ({ url }: Props) => {
             {loading && (
                 <ActivityIndicator color="#008000" style={{ position: 'absolute' }} />
             )}
-            {(error && !loading) ? <Ionicons name='person-circle-sharp' size={30}/> : memorizedImage}
+            {(error && !loading) ? <Ionicons color="#008000" name='person-circle-sharp' size={30}/> : memorizedImage}
         </ThemedView>
     )
 }

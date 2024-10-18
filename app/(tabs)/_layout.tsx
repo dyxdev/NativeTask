@@ -22,6 +22,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
+          tabBarTestID: 'BottomTab.Home',
         }}
       />
       <Tabs.Screen
@@ -31,6 +32,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'book' : 'book-outline'} color={color} />
           ),
+          tabBarTestID: 'BottomTab.Task',
         }}
       />
       <Tabs.Screen
@@ -40,6 +42,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
           ),
+          tabBarTestID: 'BottomTab.User',
         }}
       />
     </Tabs>

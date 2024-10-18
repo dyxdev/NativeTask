@@ -8,11 +8,19 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watchAll",
-    "lint": "expo lint"
+    "test": "jest --watchAll --detectOpenHandles",
+    "lint": "expo lint",
+    "build:install": "eas build --platform android",
+    "build:apk": "eas build -p android --profile preview"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "setupFiles": [
+      "./utils/setupJest.ts"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-redux))/"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -30,6 +38,7 @@
     "expo-system-ui": "~3.0.7",
     "expo-web-browser": "~13.0.3",
     "formik": "^2.4.6",
+    "nock": "^13.5.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.5",
@@ -45,6 +54,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@testing-library/react-native": "^12.7.2",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.0.7",
