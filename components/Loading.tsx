@@ -1,4 +1,4 @@
-import { ThemedText } from "./ThemedText";
+import { I18Text } from "./I18Text";
 import { ThemedView } from "./ThemedView"
 import {ActivityIndicator, StyleSheet} from 'react-native';
 
@@ -6,7 +6,7 @@ export const LoadingIndicator = ()=>{
     return (
         <ThemedView style={[styles.col,styles.container]}>
                 <ActivityIndicator color="#008000" size="large"></ActivityIndicator>
-                <ThemedText style={styles.text}>Data is fetching...</ThemedText>
+                <I18Text keyText="common.loading" style={styles.text} />
         </ThemedView>
     )
 }

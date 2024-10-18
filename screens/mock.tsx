@@ -7,10 +7,10 @@ import { useTheme } from '../theme/useTheme';
 import { Button } from '@/components/Button';
 import { ThemedView } from '@/components/ThemedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { ThemedText } from '@/components/ThemedText';
 import { UserItem } from '@/components/UserItem';
 import { User } from '@/types/user';
 import { LoadingIndicator } from '@/components/Loading';
+import { I18Text } from '@/components/I18Text';
 
 
 export const MockScreen = () => {
@@ -38,7 +38,7 @@ export const MockScreen = () => {
             {loading ? (<LoadingIndicator />) : (
                 <>
                     <Button onPress={executeFetch} style={styles.btnRefresh}>
-                        <ThemedText style={styles.btnText}>Refresh</ThemedText>
+                        <I18Text keyText='common.refresh' style={styles.btnText}/>
                         <Ionicons name="refresh-circle" size={20} color={theme?.layoutBg} />
                     </Button>
                     <FlatList

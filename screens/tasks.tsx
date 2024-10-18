@@ -1,22 +1,24 @@
-import React, { useRef } from 'react';
-import { StyleSheet, FlatList, View, TextInput } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import { addTask, deleteTask } from '@/store/slices/tasksSlice';
-import { RootState } from '../store/store';
-import { useTheme } from '../theme/useTheme';
-import Card from '../components/Card';
-import { TaskItem } from '@/components/TaskItem';
 import { Button } from '@/components/Button';
-import { typeVariants } from '../theme/theme';
-import { ThemedView } from '@/components/ThemedView';
-import type { Task } from '@/types/task'
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { useModal } from '@/hooks/modal';
+import { I18Text } from '@/components/I18Text';
 import { CustomModal } from '@/components/Modal';
+import { TaskItem } from '@/components/TaskItem';
 import { ThemedText } from '@/components/ThemedText';
-import { ErrorMessage, Formik } from 'formik';
-import { taskSchema } from '@/types/schemas/task';
+import { ThemedView } from '@/components/ThemedView';
 import { useAlerts } from '@/hooks/alert';
+import { useModal } from '@/hooks/modal';
+import { translate } from '@/i18n';
+import { addTask, deleteTask } from '@/store/slices/tasksSlice';
+import { taskSchema } from '@/types/schemas/task';
+import type { Task } from '@/types/task';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { ErrorMessage, Formik } from 'formik';
+import React, { useRef } from 'react';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import Card from '../components/Card';
+import { RootState } from '../store/store';
+import { typeVariants } from '../theme/theme';
+import { useTheme } from '../theme/useTheme';
 
 export const TasksScreen = () => {
     const { theme } = useTheme();
@@ -51,7 +53,7 @@ export const TasksScreen = () => {
     return (
         <ThemedView>
             <Button testID='Tasks.addBtn' onPress={() => openModal()} style={styles.btnAdd}>
-                <ThemedText style={{ color: theme.layoutBg, fontSize: 20 }}>New task</ThemedText>
+                <I18Text keyText='taskScreen.new' style={{ color: theme.layoutBg, fontSize: 20 }} />
             </Button>
             <FlatList
                 data={taskList}
@@ -60,7 +62,7 @@ export const TasksScreen = () => {
                 contentContainerStyle={styles.flatList}
             />
 
-            <CustomModal title='Create new task' isVisible={isOpen} onClose={() => closeModal()}>
+            <CustomModal title={translate("taskScreen.create")} isVisible={isOpen} onClose={() => closeModal()}>
                 <Card
                     style={[styles.inputCard, { borderTopColor: theme?.cardBorderColor }]}>
                     <Formik
@@ -74,7 +76,7 @@ export const TasksScreen = () => {
                                     <TextInput
                                         testID="newTaskInput"
                                         ref={inputRef}
-                                        placeholder="Insert new Task"
+                                        placeholder={translate("taskScreen.placeholder")}
                                         placeholderTextColor={theme?.color}
                                         style={[
                                             styles.input,
@@ -161,20 +163,6 @@ const styles = StyleSheet.create({
     },
     btnAddText: {
         color: '#fff',
-        fontSize: 14,
-    },
-    btnClear: {
-        borderRadius: 2,
-        paddingVertical: 5,
-        paddingHorizontal: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        // borderWidth: StyleSheet.hairlineWidth,
-        // borderColor: '#c50e29',
-        marginRight: 8,
-    },
-    btnClearText: {
-        color: '#c50e29',
         fontSize: 14,
     },
     textError:{
