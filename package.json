@@ -9,6 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll --detectOpenHandles",
+    "update-snapshots": "jest --updateSnapshot",
     "lint": "expo lint",
     "build:install": "eas build --platform android",
     "build:apk": "eas build -p android --profile preview"

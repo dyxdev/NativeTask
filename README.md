@@ -58,7 +58,10 @@ The `api.apisauce.addMonitor` function adds a monitor to log responses for debug
 
 ## Test 
 * **Jest:**  JavaScript testing framework.
-* **Command:**  npm run test.
+* **Command:**  
+
+npm run update-snapshots
+npm run test
 
 Use mock for async storage package in __mocks__ file
 Use transform ignore patterns Jest advanced option for configure redux store in tested components and screens
